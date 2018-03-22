@@ -28,4 +28,7 @@ export function getTime(str) {
   return new Date(date);
 }
 
-export function test() {}
+// 测试方法
+export function test() {
+  return 'test';
+}
