@@ -1,0 +1,28 @@
+{
+  "name": "shenjian-tools",
+  "version": "1.0.0",
+  "description": "在线工具",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint --init",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/cik/shenjian-tools.git"
+  },
+  "keywords": [],
+  "author": "楼教主 <fe.52cik@gmail.com> (http://www.52cik.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-uglify": "^3.0.0"
+  }
+}
