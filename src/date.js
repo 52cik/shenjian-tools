@@ -1,3 +1,5 @@
+import ms from './ms';
+
 /**
  * 获取字符串中的日期
  *
@@ -28,7 +30,17 @@ export function getTime(str) {
   return new Date(date);
 }
 
-// 测试方法
-export function test() {
-  return 'test';
+/**
+ * 指定日期是否过期
+ *
+ * @export
+ * @param {Date|string} date 指定日期
+ * @param {string} time ms模块参数
+ * @returns
+ */
+export function expired(date, time) {
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+  return +date < Date.now() - ms(time);
 }
