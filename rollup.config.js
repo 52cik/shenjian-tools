@@ -12,7 +12,7 @@ const banner = `
 `.trim();
 
 export default {
-  input: 'index.js',
+  input: 'src/index.js',
   output: {
     file: 'dist/index.js',
     format: 'iife',
