@@ -8,7 +8,7 @@ import ms from './ms';
  * @return {Date}
  */
 export function getTime(str) {
-  const re = /(20\d+)\D(\d+)\D(\d+)(?:\D+(\d+):(\d+)(?::(\d+))?)?/;
+  const re = /(20\d{1,2})\D(\d{1,2})\D(\d{1,2})(?:\D+(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/;
   let date = '';
 
   str.replace(re, (all, y, m, d, h, i, s) => {
