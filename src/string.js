@@ -15,7 +15,13 @@ export function getJSON(str, def) {
   }
 }
 
-// 没用占位
-export function strtest() {
-
+/**
+ * 清理图片标签
+ *
+ * @export
+ * @param {string} str 文章内容
+ */
+export function clearImg(str) {
+  return str
+    .replace(/<img[^>]+?src="([^"]+)"[^>]*>(?:<\/img>)?/gi, '<img src="$1">');
 }
