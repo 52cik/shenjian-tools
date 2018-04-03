@@ -25,3 +25,14 @@ export function clearImg(str) {
   return str
     .replace(/<img[^>]+?src="([^"]+)"[^>]*>(?:<\/img>)?/gi, '<img src="$1">');
 }
+
+/**
+ * 修复相对协议地址
+ *
+ * @export
+ * @param {string} url url地址
+ * @returns
+ */
+export function fixHttp(url) {
+  return url.replace(/(?=^\/\/)/, 'http:');
+}
