@@ -1,8 +1,16 @@
 import ms from './ms';
 
+/**
+ * 补零
+ *
+ * @param {any} n
+ * @returns
+ */
 function pad(n) {
+  n = +n;
   return n < 10 ? '0' + n : n;
 }
+
 /**
  * 获取字符串中的日期
  *
