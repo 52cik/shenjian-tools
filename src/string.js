@@ -35,6 +35,9 @@ export function clearImg(str) {
  * @param {string} url url地址
  */
 export function fixImgExt(url) {
+  if (url.trim() === '') {
+    return url;
+  }
   // 第一财经类型带@参数图片
   // http://imgcdn.yicai.com/uppics/slides/2018/04/636588982981500913.png@250w_1e_1c
   if (/\.(jpe?g|gif|a?png|bmp|webp)@/.test(url)) {
@@ -60,6 +63,9 @@ export function fixImgExt(url) {
  * @returns
  */
 export function fixHttp(url) {
+  if (url.trim() === '') {
+    return url;
+  }
   return url.replace(/(?=^\/\/)/, 'http:');
 }
 
@@ -71,5 +77,8 @@ export function fixHttp(url) {
  * @returns
  */
 export function fixImg(url) {
+  if (url.trim() === '') {
+    return url;
+  }
   return fixImgExt(fixHttp(url));
 }

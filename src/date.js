@@ -1,5 +1,8 @@
 import ms from './ms';
 
+function pad(n) {
+  return n < 10 ? '0' + n : n;
+}
 /**
  * 获取字符串中的日期
  *
@@ -12,21 +15,19 @@ export function getTime(str) {
   let date = '';
 
   str.replace(re, (all, y, m, d, h, i, s) => {
-    date = `${y}-${m}-${d}`;
-    if (h) date += ` ${h}`;
-    if (i) date += `:${i}`;
-    if (s) date += `:${s}`;
+    date = `${y}-${pad(m)}-${pad(d)}`;
+    if (h) date += ` ${pad(h)}`;
+    if (i) date += `:${pad(i)}`;
+    if (s) date += `:${pad(s)}`;
   });
 
   if (!/^20\d+-\d+-\d+/.test(date)) {
     return null;
   }
 
-  date = date.replace(/(?=\b\d\b)/g, '0');
+  const fix = '0000-00-00 00:00:00'.slice(date.length);
 
-  const pad = '0000-00-00 00:00:00'.slice(date.length);
-
-  date += pad;
+  date += fix;
   return new Date(date);
 }
 
