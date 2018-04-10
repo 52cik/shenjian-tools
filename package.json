@@ -1,6 +1,6 @@
 {
   "name": "shenjian-tools",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "在线工具",
   "main": "dist/index.js",
   "scripts": {

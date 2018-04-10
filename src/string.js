@@ -40,14 +40,14 @@ export function fixImgExt(url) {
   }
   // 第一财经类型带@参数图片
   // http://imgcdn.yicai.com/uppics/slides/2018/04/636588982981500913.png@250w_1e_1c
-  if (/\.(jpe?g|gif|a?png|bmp|webp)@/.test(url)) {
+  if (/\.(jpe?g|gif|a?png|bmp|webp)@/i.test(url)) {
     // 636588982981500913.png@250w_1e_1c
     // 636588982981500913.png@250w_1e_1c.png
     return url.replace(/(\.\w+)@.+/, '$&$1');
   }
 
   // 有后缀就放行 （未知情况在说）
-  if (/\.(jpe?g|gif|a?png|bmp|webp)/.test(url)) {
+  if (/\.(jpe?g|gif|a?png|bmp|webp)/i.test(url)) {
     return url;
   }
 
