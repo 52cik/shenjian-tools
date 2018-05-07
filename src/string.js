@@ -20,11 +20,12 @@ export function getJSON(str, def) {
  *
  * @export
  * @param {string} str 文章内容
+ * @param {boolean} ext 修复图片后缀
  */
-export function clearImg(str) {
+export function clearImg(str, ext) {
   return str
     .replace(/<img[^>]+?src="([^"]+)"[^>]*>(?:<\/img>)?/gi, function (m, src) {
-      return '<img src="' + fixImg(src) + '">';
+      return '<img src="' + fixImg(src, ext) + '">';
     });
 }
 
@@ -33,8 +34,13 @@ export function clearImg(str) {
  *
  * @export
  * @param {string} url url地址
+ * @param {boolean} ext 修复图片后缀
  */
-export function fixImgExt(url) {
+export function fixImgExt(url, ext) {
+  if (ext === false) {
+    return url;
+  }
+
   if (url.trim() === '') {
     return url;
   }
@@ -74,11 +80,12 @@ export function fixHttp(url) {
  *
  * @export
  * @param {string} url url地址
+ * @param {boolean} ext 修复图片后缀
  * @returns
  */
-export function fixImg(url) {
+export function fixImg(url, ext) {
   if (url.trim() === '') {
     return url;
   }
-  return fixImgExt(fixHttp(url));
+  return fixImgExt(fixHttp(url), ext);
 }
