@@ -5,22 +5,22 @@ const d = h * 24;
 const w = d * 7;
 const y = d * 365.25;
 
+const re = /^((?:\d+)?-?\d?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i;
+
 /**
  * Parse the given `str` and return milliseconds.
  *
- * @param {String} str
- * @return {Number}
+ * @param str
  * @api private
  */
-
-export default function parse(str) {
+export default function parse(str: string): number {
   str = String(str);
   if (str.length > 100) {
-    return undefined;
+    return 0;
   }
-  const match = /^((?:\d+)?-?\d?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(str);
+  const match = re.exec(str);
   if (!match) {
-    return undefined;
+    return 0;
   }
   const n = parseFloat(match[1]);
   const type = (match[2] || 'ms').toLowerCase();
@@ -63,7 +63,8 @@ export default function parse(str) {
     case 'msec':
     case 'ms':
       return n;
+    /* istanbul ignore next */
     default:
-      return undefined;
+      return 0;
   }
 }

@@ -1,42 +1,38 @@
 /**
  * 解析 json jsonp 数据
- *
- * @export
- * @param {string} str 需要解析的字符串
- * @param {object|array} def 默认返回
- * @returns
+ * @param str 需要解析的字符串
+ * @param def 默认返回
  */
-export function getJSON(str, def) {
+export function getJSON(
+  str: string,
+  def: object | object[] = {},
+): object | object[] {
   str = str.replace(/^[^{[]+/, '').replace(/[^}\]]+$/, '');
   try {
     return JSON.parse(str);
   } catch (error) {
-    return def || {};
+    return def;
   }
 }
 
+// 图片正则
+const reImg = /<img[^>]+?src="([^"]+)"[^>]*>(?:<\/img>)?/gi;
+
 /**
  * 清理图片标签
- *
- * @export
- * @param {string} str 文章内容
- * @param {boolean} ext 修复图片后缀
+ * @param str 文章内容
+ * @param ext 修复图片后缀
  */
-export function clearImg(str, ext) {
-  return str
-    .replace(/<img[^>]+?src="([^"]+)"[^>]*>(?:<\/img>)?/gi, function (m, src) {
-      return '<img src="' + fixImg(src, ext) + '">';
-    });
+export function clearImg(str: string, ext: boolean = true): string {
+  return str.replace(reImg, (m, src) => `<img src="${fixImg(src, ext)}">`);
 }
 
 /**
  * 修复图片后缀
- *
- * @export
- * @param {string} url url地址
- * @param {boolean} ext 修复图片后缀
+ * @param url url地址
+ * @param ext 修复图片后缀
  */
-export function fixImgExt(url, ext) {
+export function fixImgExt(url: string, ext: boolean = true): string {
   if (ext === false) {
     return url;
   }
@@ -63,12 +59,9 @@ export function fixImgExt(url, ext) {
 
 /**
  * 修复相对协议地址
- *
- * @export
- * @param {string} url url地址
- * @returns
+ * @param url url地址
  */
-export function fixHttp(url) {
+export function fixHttp(url: string): string {
   if (url.trim() === '') {
     return url;
   }
@@ -77,13 +70,10 @@ export function fixHttp(url) {
 
 /**
  * 修复 相对协议地址 + 修复图片后缀
- *
- * @export
- * @param {string} url url地址
- * @param {boolean} ext 修复图片后缀
- * @returns
+ * @param url url地址
+ * @param ext 修复图片后缀
  */
-export function fixImg(url, ext) {
+export function fixImg(url: string, ext: boolean = true): string {
   if (url.trim() === '') {
     return url;
   }
@@ -97,7 +87,7 @@ const reLatin = new RegExp('[\\x00-\\xff]+', 'g');
  * @param {string} str 带计算的 html 文本
  * @return {number} 长度
  */
-export function strLen(str) {
+export function strLen(str: string): number {
   if (!str) {
     return 0;
   }

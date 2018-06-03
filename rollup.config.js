@@ -1,5 +1,5 @@
-import babel from 'rollup-plugin-babel';
-import uglify from 'rollup-plugin-uglify';
+import { uglify } from 'rollup-plugin-uglify';
+import typescript from 'rollup-plugin-typescript';
 
 import { version } from './package.json';
 
@@ -12,21 +12,21 @@ const banner = `
 `.trim();
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: {
     file: 'dist/index.js',
     format: 'iife',
     name: 'tools',
   },
   plugins: [
-    babel(),
+    typescript({
+      typescript: require('typescript'),
+    }),
     uglify({ output: { preamble: banner } }),
     {
       name: 'replace',
       transformBundle(code) {
-        return code
-          .replace('var tools=', '(')
-          .replace('}({});', '})({});');
+        return code.replace('var tools=', '(').replace('}({});', '})({});');
       },
     },
   ],
