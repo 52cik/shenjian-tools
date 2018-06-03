@@ -89,3 +89,17 @@ export function fixImg(url, ext) {
   }
   return fixImgExt(fixHttp(url), ext);
 }
+
+// 拉丁文范围正则
+const reLatin = new RegExp('[\\x00-\\xff]+', 'g');
+/**
+ * 过滤拉丁文后的字符串长度 (计算中文长度)
+ * @param {string} str 带计算的 html 文本
+ * @return {number} 长度
+ */
+export function strLen(str) {
+  if (!str) {
+    return 0;
+  }
+  return String(str).replace(reLatin, '').length;
+}
