@@ -7,5 +7,6 @@ module.exports = {
     'prefer-template': 'off',
     'func-names': 'off',
     'no-use-before-define': 'off',
+    'no-control-regex': 'off',
   },
 };
