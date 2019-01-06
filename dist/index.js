@@ -1,5 +1,5 @@
 /*!
- * shenjian tools v2.0.0
+ * shenjian tools v2.1.0
  * (c) 2019 楼教主 <fe.52cik@gmail.com> (http://www.52cik.com/)
  * Released under the MIT License.
  */
